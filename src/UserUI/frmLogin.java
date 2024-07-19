@@ -5,10 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
+
+import Data.DBConnection;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
 
 public class frmLogin extends JFrame{
 	/**
@@ -50,6 +58,7 @@ public class frmLogin extends JFrame{
 	 */
 	private void initialize() {
 		setBounds(100, 100, 470, 248);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
@@ -62,7 +71,7 @@ public class frmLogin extends JFrame{
 		txtUser.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Inicio de sesión");
-		lblNewLabel.setBounds(97, 7, 240, 48);
+		lblNewLabel.setBounds(149, 91, 240, 48);
 		getContentPane().add(lblNewLabel);
 		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setFont(new Font("Cascadia Mono", Font.PLAIN, 25));
@@ -84,6 +93,10 @@ public class frmLogin extends JFrame{
 		passwordField.setBounds(155, 103, 190, 32);
 		getContentPane().add(passwordField);
 		
+		JLabel lblPrueba = new JLabel("Probando");
+		lblPrueba.setBounds(26, 6, 395, 38);
+		getContentPane().add(lblPrueba);
+		
 		JButton btnLogin = new JButton("Iniciar Sesión");
 		btnLogin.setBackground(SystemColor.inactiveCaption);
 		btnLogin.setFont(new Font("Cascadia Mono", Font.PLAIN, 14));
@@ -95,5 +108,7 @@ public class frmLogin extends JFrame{
 		btnCancel.setBackground(SystemColor.inactiveCaption);
 		btnCancel.setBounds(244, 159, 160, 32);
 		getContentPane().add(btnCancel);
+		
+		
 	}
 }
