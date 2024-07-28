@@ -7,7 +7,7 @@ public class DBConnection {
 
 	/*Devuelve la Conexión*/
 	public static Connection getConnection() {
-		String URL = "jdbc:sqlserver://DESKTOP-K0KDF4G:1433;databaseName=SalesSystem;integratedSecurity=true;encrypt=false;";
+		String URL = "jdbc:sqlserver://localhost:1433;databaseName=SalesSystem;integratedSecurity=true;encrypt=false;";
 		
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

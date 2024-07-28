@@ -34,6 +34,8 @@ Create table Users(
 userid int identity(1,1) primary key,
 roleid int references Roles(roleid),
 fullname nvarchar(150) not null,
+username nvarchar(40) not null,
+password nvarchar(50) not null,
 birthdate date not null,
 identificationcard int not null,
 phone int null,
@@ -114,5 +116,19 @@ saleprice decimal(10,2),
 amount int not null,
 totalamount decimal(10,2),
 );
+go
 
 drop database SalesSystem
+
+Insert into Roles(rolename) values('Administrador'), ('Empleado');
+
+select * from Roles
+
+select * from Users
+
+select userid, r.roleid, rolename, r.registrationdate, fullname, username, password, birthdate, identificationcard, phone, email, u.registrationdate from Users u
+inner join Roles r on u.roleid = r.roleid
+
+Insert into Users(roleid, fullname, username, password, birthdate, identificationcard, phone, email)
+values(1, 'Oliver Ernesto Tejeda Marte', 'Ov3rst', '123', '20/05/1997', 002123451, 123456, 'otejeda41@gmail.com'),
+(2, 'Edwin Nivar Lluveres', 'edwin','456', '25/05/1997', 002123451, 456346, 'edwin@gmail.com');

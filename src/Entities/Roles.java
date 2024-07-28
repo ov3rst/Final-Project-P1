@@ -8,7 +8,6 @@ public class Roles {
 	private Date registrationdate;
 	
 	public Roles(int roleid, String rolename, Date registrationdate) {
-		super();
 		this.roleid = roleid;
 		this.rolename = rolename;
 		this.registrationdate = registrationdate;
