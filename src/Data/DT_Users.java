@@ -29,6 +29,9 @@ public class DT_Users {
 				userList.add(new User(result.getInt(1), new Roles(result.getInt(2), result.getString(3), roldate), result.getString(5),result.getString(6), result.getString(7), birthdate, result.getInt(9), result.getInt(10), result.getString(11), userdate));
 			}
 			
+			st.close();
+			result.close();
+			con.close();
 			/*A la tabla Users en la base de datos le falta agregar el campo password, debo hacer que inmediatamente
 			 * se comience a ejecutar la aplicacion se ejecute la carga de los datos para mas rapidez a la
 			 * hora de abrir la app, debo tambien hacer que los datos se mantengan guardados mientras

@@ -24,15 +24,14 @@ public class frmStart extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JMenuItem mniMonthReport;
+	private JMenuItem mniBuyReport;
 	private JMenuItem mniProvider;
 	private JMenuItem mniExit;
 	private JMenuItem mniSales;
 	private JMenuItem mniBuy;
 	private JMenuItem mniUsers;
-	private JMenuItem mniExpenses;
-	private JMenuItem mniIncome;
-	private JMenuItem mniWeekReport;
+	private JMenuItem mniAccPay;
+	private JMenuItem mniSaleReport;
 	private JPanel plInit;
 	private JMenuItem mniSaleDetails;
 	private JMenuItem mniBuyDetails;
@@ -41,6 +40,9 @@ public class frmStart extends JFrame {
 	private JMenuItem mniUsers_1;
 	private JLabel lblShowUser;
 	private JLabel lblUserIs;
+	private JMenuItem mniPayments;
+	private JMenuItem mniIncome;
+	private JMenuItem mniAccRec;
 
 	/**
 	 * Create the frame.
@@ -129,36 +131,39 @@ public class frmStart extends JFrame {
 		mniUsers_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		mnEmployees.add(mniUsers_1);
 		
-		JMenu mnExpenses = new JMenu("Gastos");
-		mnExpenses.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnExpenses.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-expenses-50.png"));
-		menuBar.add(mnExpenses);
+		JMenu mnFinances = new JMenu("Gastos");
+		mnFinances.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnFinances.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-acumular-50.png"));
+		menuBar.add(mnFinances);
 		
-		mniExpenses = new JMenuItem("Cuentas por Pagar");
-		mniExpenses.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnExpenses.add(mniExpenses);
+		mniAccPay = new JMenuItem("Cuentas por Pagar");
+		mniAccPay.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnFinances.add(mniAccPay);
 		
-		JMenu mnIncome = new JMenu("Ingresos");
-		mnIncome.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnIncome.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-receive-cash-50.png"));
-		menuBar.add(mnIncome);
-		
-		mniIncome = new JMenuItem("Cuentas por Cobrar");
-		mniIncome.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnIncome.add(mniIncome);
+		mniAccRec = new JMenuItem("Cuentas por Cobrar");
+		mniAccRec.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnFinances.add(mniAccRec);
 		
 		JMenu mnReports = new JMenu("Reportes");
 		mnReports.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		mnReports.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-archivo-de-informe-50.png"));
 		menuBar.add(mnReports);
 		
-		mniMonthReport = new JMenuItem("Reporte mensual");
-		mniMonthReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnReports.add(mniMonthReport);
+		mniBuyReport = new JMenuItem("Reporte Compras");
+		mniBuyReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnReports.add(mniBuyReport);
 		
-		mniWeekReport = new JMenuItem("Reporte semanal");
-		mniWeekReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnReports.add(mniWeekReport);
+		mniSaleReport = new JMenuItem("Reporte Ventas");
+		mniSaleReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnReports.add(mniSaleReport);
+		
+		mniPayments = new JMenuItem("Pagos");
+		mniPayments.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnReports.add(mniPayments);
+		
+		mniIncome = new JMenuItem("Ingresos");
+		mniIncome.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mnReports.add(mniIncome);
 		
 		mnRoster = new JMenu("Nómina");
 		mnRoster.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-employee-rotational-shift-work-procedure-with-loop-arrows-layout-50.png"));
@@ -199,7 +204,7 @@ public class frmStart extends JFrame {
 	}
 
 	public JMenuItem getMniMonthReport() {
-		return mniMonthReport;
+		return mniBuyReport;
 	}
 
 	public JMenuItem getMniProvider() {
@@ -223,7 +228,7 @@ public class frmStart extends JFrame {
 	}
 
 	public JMenuItem getMniExpenses() {
-		return mniExpenses;
+		return mniAccPay;
 	}
 
 	public JMenuItem getMniIncome() {
@@ -231,7 +236,7 @@ public class frmStart extends JFrame {
 	}
 
 	public JMenuItem getMniWeekReport() {
-		return mniWeekReport;
+		return mniSaleReport;
 	}
 	
 	public JPanel getPlInit() {

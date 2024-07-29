@@ -55,13 +55,15 @@ public class frmBuyDetails extends JPanel {
 		add(txtInvoiceNum);
 		
 		JButton btnSearch = new JButton("Buscar");
+		btnSearch.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnSearch.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-búsqueda-20.png"));
-		btnSearch.setBounds(276, 60, 103, 28);
+		btnSearch.setBounds(274, 60, 103, 28);
 		add(btnSearch);
 		
 		JButton btnClear = new JButton("Limpiar");
+		btnClear.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnClear.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-clear-20.png"));
-		btnClear.setBounds(389, 60, 103, 28);
+		btnClear.setBounds(385, 60, 107, 28);
 		add(btnClear);
 		
 		JPanel pnlBuyInformation = new JPanel();

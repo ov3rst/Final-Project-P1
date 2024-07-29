@@ -86,8 +86,8 @@ public class frmUsers extends JPanel {
 		add(btnDelete);
 		
 		JLabel lblDetails = new JLabel("Detalle Usuario");
-		lblDetails.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		lblDetails.setBounds(12, 28, 178, 39);
+		lblDetails.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		lblDetails.setBounds(12, 28, 192, 39);
 		add(lblDetails);
 		
 		JLabel lblConfirmarContrasea = new JLabel("Confirmar Contraseña");
@@ -99,7 +99,7 @@ public class frmUsers extends JPanel {
 		txtId.setEnabled(false);
 		txtId.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		txtId.setColumns(10);
-		txtId.setBounds(188, 35, 34, 32);
+		txtId.setBounds(235, 40, 34, 32);
 		add(txtId);
 		
 		tab = new JTable(tbm);
@@ -109,11 +109,12 @@ public class frmUsers extends JPanel {
 		add(scl);
 		
 		JLabel lblList = new JLabel("Lista de Usuarios");
-		lblList.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		lblList.setBounds(289, 28, 185, 39);
+		lblList.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		lblList.setBounds(289, 28, 205, 39);
 		add(lblList);
 		
 		JComboBox<String> cbEmployeesName = new JComboBox<String>();
+		cbEmployeesName.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		cbEmployeesName.setBounds(14, 85, 250, 32);
 		add(cbEmployeesName);
 		

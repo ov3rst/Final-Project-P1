@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import java.awt.SystemColor;
 import java.util.Date;
 
-public class frmCompra extends JPanel {
+public class frmBuy extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtDate;
@@ -46,7 +46,7 @@ public class frmCompra extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public frmCompra() {
+	public frmBuy() {
 		setLocation(-23, -85);
 		setBackground(SystemColor.activeCaption);
 		setLayout(null);
@@ -208,7 +208,7 @@ public class frmCompra extends JPanel {
 		add(btnAddProduct);
 		
 		btnRegister = new JButton("Registrar");
-		btnRegister.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnRegister.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnRegister.setBounds(675, 405, 101, 47);
 		add(btnRegister);
 		

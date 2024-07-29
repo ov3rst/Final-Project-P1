@@ -213,7 +213,7 @@ public class frmSales extends JPanel {
 		add(txtTotal);
 		
 		JButton btnRegister = new JButton("Registrar");
-		btnRegister.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnRegister.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnRegister.setBounds(688, 404, 100, 47);
 		add(btnRegister);
 		
