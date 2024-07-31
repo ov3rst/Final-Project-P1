@@ -26,7 +26,6 @@ public class DT_Users {
 				Date roldate = result.getDate(4);
 				Date birthdate = result.getDate(8);
 				Date userdate = result.getDate(12);
-				userList.add(new User(result.getInt(1), new Roles(result.getInt(2), result.getString(3), roldate), result.getString(5),result.getString(6), result.getString(7), birthdate, result.getInt(9), result.getInt(10), result.getString(11), userdate));
 			}
 			
 			st.close();

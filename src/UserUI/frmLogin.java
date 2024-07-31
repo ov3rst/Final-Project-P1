@@ -44,7 +44,7 @@ public class frmLogin extends JFrame{
 	 * Create the application.
 	 */
 	public frmLogin() {
-		getContentPane().setBackground(SystemColor.textHighlight);
+		getContentPane().setBackground(SystemColor.activeCaption);
 		setResizable(false);
 		setTitle("LOGIN");
 		initialize();
@@ -66,7 +66,7 @@ public class frmLogin extends JFrame{
 		getContentPane().add(txtUser);
 		txtUser.setForeground(SystemColor.desktop);
 		txtUser.setFont(new Font("Cascadia Mono", Font.PLAIN, 16));
-		txtUser.setBackground(SystemColor.inactiveCaption);
+		txtUser.setBackground(SystemColor.window);
 		txtUser.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Inicio de sesión");
@@ -88,7 +88,7 @@ public class frmLogin extends JFrame{
 		getContentPane().add(lblContrasea);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBackground(SystemColor.inactiveCaption);
+		txtPassword.setBackground(SystemColor.window);
 		txtPassword.setBounds(155, 103, 190, 32);
 		getContentPane().add(txtPassword);
 		

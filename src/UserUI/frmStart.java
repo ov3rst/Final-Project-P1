@@ -29,7 +29,7 @@ public class frmStart extends JFrame {
 	private JMenuItem mniExit;
 	private JMenuItem mniSales;
 	private JMenuItem mniBuy;
-	private JMenuItem mniUsers;
+	private JMenuItem mniEmployees;
 	private JMenuItem mniAccPay;
 	private JMenuItem mniSaleReport;
 	private JPanel plInit;
@@ -37,7 +37,7 @@ public class frmStart extends JFrame {
 	private JMenuItem mniBuyDetails;
 	private JMenu mnRoster;
 	private JMenuItem mniRoster;
-	private JMenuItem mniUsers_1;
+	private JMenuItem mniUsers;
 	private JLabel lblShowUser;
 	private JLabel lblUserIs;
 	private JMenuItem mniPayments;
@@ -98,10 +98,12 @@ public class frmStart extends JFrame {
 		
 		mniSales = new JMenuItem("Ventas");
 		mniSales.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniSales.addActionListener(actions);
 		mnSales.add(mniSales);
 		
 		mniSaleDetails = new JMenuItem("Ver Ventas");
 		mniSaleDetails.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniSaleDetails.addActionListener(actions);
 		mnSales.add(mniSaleDetails);
 		
 		JMenu mnBuy = new JMenu("Compras");
@@ -111,10 +113,12 @@ public class frmStart extends JFrame {
 		
 		mniBuy = new JMenuItem("Compras");
 		mniBuy.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniBuy.addActionListener(actions);
 		mnBuy.add(mniBuy);
 		
 		mniBuyDetails = new JMenuItem("Ver Compras");
 		mniBuyDetails.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniBuyDetails.addActionListener(actions);
 		mnBuy.add(mniBuyDetails);
 		
 		JMenu mnEmployees = new JMenu("Empleados");
@@ -122,26 +126,29 @@ public class frmStart extends JFrame {
 		mnEmployees.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-grupo-de-usuario-50.png"));
 		menuBar.add(mnEmployees);
 		
-		mniUsers = new JMenuItem("Gestionar Empleados");
+		mniEmployees = new JMenuItem("Gestionar Empleados");
+		mniEmployees.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniEmployees.addActionListener(actions);
+		mnEmployees.add(mniEmployees);
+		
+		mniUsers = new JMenuItem("Gestionar Usuarios");
 		mniUsers.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		mniUsers.addActionListener(actions);
 		mnEmployees.add(mniUsers);
 		
-		mniUsers_1 = new JMenuItem("Gestionar Usuarios");
-		mniUsers_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		mnEmployees.add(mniUsers_1);
-		
-		JMenu mnFinances = new JMenu("Gastos");
+		JMenu mnFinances = new JMenu("Cuentas");
 		mnFinances.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		mnFinances.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-acumular-50.png"));
 		menuBar.add(mnFinances);
 		
 		mniAccPay = new JMenuItem("Cuentas por Pagar");
 		mniAccPay.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniAccPay.addActionListener(actions);
 		mnFinances.add(mniAccPay);
 		
 		mniAccRec = new JMenuItem("Cuentas por Cobrar");
 		mniAccRec.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniAccRec.addActionListener(actions);
 		mnFinances.add(mniAccRec);
 		
 		JMenu mnReports = new JMenu("Reportes");
@@ -151,18 +158,22 @@ public class frmStart extends JFrame {
 		
 		mniBuyReport = new JMenuItem("Reporte Compras");
 		mniBuyReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniBuyReport.addActionListener(actions);
 		mnReports.add(mniBuyReport);
 		
 		mniSaleReport = new JMenuItem("Reporte Ventas");
 		mniSaleReport.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniSaleReport.addActionListener(actions);
 		mnReports.add(mniSaleReport);
 		
 		mniPayments = new JMenuItem("Pagos");
 		mniPayments.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniPayments.addActionListener(actions);
 		mnReports.add(mniPayments);
 		
 		mniIncome = new JMenuItem("Ingresos");
 		mniIncome.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniIncome.addActionListener(actions);
 		mnReports.add(mniIncome);
 		
 		mnRoster = new JMenu("Nómina");
@@ -172,7 +183,9 @@ public class frmStart extends JFrame {
 		
 		mniRoster = new JMenuItem("Pagos De Nómina");
 		mniRoster.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniRoster.addActionListener(actions);
 		mnRoster.add(mniRoster);
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -196,14 +209,13 @@ public class frmStart extends JFrame {
 		lblUserIs.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		lblUserIs.setBounds(714, 2, 73, 24);
 		contentPane.add(lblUserIs);
-		
-//		JPanel emptyPanel = new JPanel();
-//		Userpanel usp = new Userpanel();
-//		plInit.add(emptyPanel);
-//		plInit.add(usp, "User Panel");
 	}
 
 	public JMenuItem getMniMonthReport() {
+		return mniBuyReport;
+	}
+
+	public JMenuItem getMniBuyReport() {
 		return mniBuyReport;
 	}
 
@@ -223,23 +235,55 @@ public class frmStart extends JFrame {
 		return mniBuy;
 	}
 
+	public JMenuItem getMniEmployees() {
+		return mniEmployees;
+	}
+
+	public JMenuItem getMniAccPay() {
+		return mniAccPay;
+	}
+
+	public JMenuItem getMniSaleReport() {
+		return mniSaleReport;
+	}
+
+	public JPanel getPlInit() {
+		return plInit;
+	}
+
+	public JMenuItem getMniSaleDetails() {
+		return mniSaleDetails;
+	}
+
+	public JMenuItem getMniBuyDetails() {
+		return mniBuyDetails;
+	}
+
+	public JMenu getMnRoster() {
+		return mnRoster;
+	}
+
+	public JMenuItem getMniRoster() {
+		return mniRoster;
+	}
+
 	public JMenuItem getMniUsers() {
 		return mniUsers;
 	}
 
-	public JMenuItem getMniExpenses() {
-		return mniAccPay;
+	public JMenuItem getMniPayments() {
+		return mniPayments;
 	}
 
 	public JMenuItem getMniIncome() {
 		return mniIncome;
 	}
 
-	public JMenuItem getMniWeekReport() {
-		return mniSaleReport;
+	public JMenuItem getMniAccRec() {
+		return mniAccRec;
 	}
+
 	
-	public JPanel getPlInit() {
-		return plInit;
-	}
+	
+	
 }

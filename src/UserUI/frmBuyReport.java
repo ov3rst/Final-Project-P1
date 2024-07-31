@@ -1,6 +1,9 @@
 package UserUI;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -9,11 +12,16 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class frmBuyReport extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField txtSearchFor;
+	private String[] columnNames = {"Cliente", "Monto Total", "Monto Adeudado", "¿Saldada?"};
+	private DefaultTableModel tbm = new DefaultTableModel(columnNames, 0);
+	private JTable tab;
+	private JScrollPane scl;
 
 	/**
 	 * Create the panel.
@@ -103,6 +111,10 @@ public class frmBuyReport extends JPanel {
 		txtSearchFor.setColumns(10);
 		txtSearchFor.setBounds(555, 12, 148, 28);
 		pnl2.add(txtSearchFor);
-
+		
+		tab = new JTable(tbm);
+		scl = new JScrollPane(tab);
+		scl.setBounds(12, 52, 514, 233);
+		pnl2.add(scl);
 	}
 }

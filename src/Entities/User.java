@@ -5,26 +5,17 @@ import java.util.Date;
 public class User {
 	private int userid;
 	private Roles rol;
-	private String fullname;
+	private Employees employee;
 	private String username;
 	private String password;
-	private Date birthdate;
-	private  int identificationcard;
-	private int phone;
-	private String email;
 	private Date registrationdate;
 	
-	public User(int userid, Roles rol, String fullname, String username, String password, Date birthdate, int identificationcard, int phone, String email,
-			Date registrationdate) {
+	public User(int userid, Roles rol, Employees employye, String username, String password, Date registrationdate) {
 		this.userid = userid;
 		this.rol = rol;
-		this.fullname = fullname;
+		this.employee = employye;
 		this.username = username;
 		this.password = password;
-		this.birthdate = birthdate;
-		this.identificationcard = identificationcard;
-		this.phone = phone;
-		this.email = email;
 		this.registrationdate = registrationdate;
 	}
 
@@ -32,40 +23,49 @@ public class User {
 		return userid;
 	}
 
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
 	public Roles getRol() {
 		return rol;
 	}
 
-	public String getFullname() {
-		return fullname;
+	public void setRol(Roles rol) {
+		this.rol = rol;
 	}
-	
+
+	public Employees getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employees employee) {
+		this.employee = employee;
+	}
+
 	public String getUsername() {
 		return username;
 	}
-	
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	public int getIdentificationcard() {
-		return identificationcard;
-	}
-
-	public int getPhone() {
-		return phone;
-	}
-
-	public String getEmail() {
-		return email;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Date getRegistrationdate() {
 		return registrationdate;
 	}
+
+	public void setRegistrationdate(Date registrationdate) {
+		this.registrationdate = registrationdate;
+	}
+	
 	
 }

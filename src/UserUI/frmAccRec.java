@@ -18,7 +18,7 @@ public class frmAccRec extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtSearch;
 	private String[] columnNames = {"Cliente", "Monto Total", "Monto Adeudado", "¿Saldada?"};
 	private DefaultTableModel tbm = new DefaultTableModel(columnNames, 0);
 	private JTable tab;
@@ -83,11 +83,11 @@ public class frmAccRec extends JPanel {
 		lblSearch.setBounds(10, 64, 42, 15);
 		panel.add(lblSearch);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		textField_1.setColumns(10);
-		textField_1.setBounds(56, 56, 155, 28);
-		panel.add(textField_1);
+		txtSearch = new JTextField();
+		txtSearch.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		txtSearch.setColumns(10);
+		txtSearch.setBounds(56, 56, 155, 28);
+		panel.add(txtSearch);
 		
 		JButton btnSearch = new JButton("");
 		btnSearch.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-búsqueda-20.png"));
