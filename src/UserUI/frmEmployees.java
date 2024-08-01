@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,8 @@ import Entities.Employees;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.SystemColor;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import com.toedter.calendar.JDateChooser;
@@ -30,7 +33,14 @@ public class frmEmployees extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private String[] columnNames = {"Nombre Completo", "Cédula", "Teléfono", "Correo Electronico", "Salario", "Posición", "Fecha de Nacimiento", "Fecha de Ingreso"};
-	private DefaultTableModel tbm = new DefaultTableModel(columnNames, 0);
+	private DefaultTableModel tbm = new DefaultTableModel(columnNames, 0) {
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			return false; //
+		}
+	};
 	private JTable tab;
 	private JScrollPane scl;
 	private JTextField txtFullname;
@@ -49,6 +59,7 @@ public class frmEmployees extends JPanel {
 	private JDateChooser dcBirthdate;
 	private JButton btnSave;
 	private EmployeeActions actions;
+	Employees employee;
 
 	/**
 	 * Create the panel.
@@ -58,24 +69,56 @@ public class frmEmployees extends JPanel {
 		setBounds(100, 100, 970, 498);
 		setBorder(null);
 		setLayout(null);
+		addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getSource() != tab || e.getSource() != scl) {
+					tab.clearSelection();
+				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {				
+			}
+			
+		});
 		
 		tab = new JTable(tbm);
+		tab.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tab.setShowHorizontalLines(false);
+		tab.setShowVerticalLines(false);
 		tab.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				EnableBtn();
-				int row = tab.getSelectedRow(), identification = Integer.parseInt(tab.getValueAt(row, 1).toString());
-				Employees emp = empList.stream()
-														.filter(em -> em.getIdentificationcard() == identification)
-														.findFirst()
-														.get();
-				if(emp != null) {
-					FillFields(emp);
+				ClearFields();
+				if(tab.getSelectedRow() != -1) {
+					int row = tab.getSelectedRow(), identification = Integer.parseInt(tab.getValueAt(row, 1).toString());
+					Employees emp = empList.stream()
+															.filter(em -> em.getIdentificationcard() == identification)
+															.findFirst()
+															.get();
+					employee = emp;
+					if(emp != null) {
+						FillFields(emp);
+					}
 				}
-				
 			}
-			
 		});
 		scl = new JScrollPane(tab);
 		scl.setBounds(287, 89, 667, 393);		
@@ -146,6 +189,7 @@ public class frmEmployees extends JPanel {
 		btnEdit.setForeground(new Color(255, 255, 255));
 		btnEdit.setBackground(new Color(30, 144, 255));
 		btnEdit.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		btnEdit.addActionListener(actions);
 		btnEdit.setBounds(37, 414, 210, 28);
 		add(btnEdit);
 		
@@ -159,6 +203,7 @@ public class frmEmployees extends JPanel {
 		btnDelete.setForeground(new Color(255, 255, 255));
 		btnDelete.setBackground(new Color(220, 20, 60));
 		btnDelete.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		btnDelete.addActionListener(actions);
 		btnDelete.setBounds(37, 454, 210, 28);
 		add(btnDelete);
 		
@@ -237,6 +282,7 @@ public class frmEmployees extends JPanel {
 		txtEmail.setText(emp.getEmail());
 		txtPosition.setText(emp.getPosition());
 		txtSalary.setText(String.valueOf(emp.getSalary()));
+		dcBirthdate.setDate(emp.getBirthdate());
 	}
 	
 	private void EnableBtn() {
@@ -279,6 +325,7 @@ public class frmEmployees extends JPanel {
 			field.setText("");
 		}
 		
+		txtId.setText("");
 		dcBirthdate.setDate(null);
 	}
 
@@ -332,6 +379,10 @@ public class frmEmployees extends JPanel {
 
 	public JButton getBtnSave() {
 		return btnSave;
+	}
+
+	public Employees getEmployee() {
+		return employee;
 	}
 	
 	

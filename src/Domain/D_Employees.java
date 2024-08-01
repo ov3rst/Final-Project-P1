@@ -25,13 +25,12 @@ public class D_Employees implements ICrudEmployees {
 	@Override
 	public boolean Update(Employees employee) {
 		// TODO Auto-generated method stub
-		return false;
+		return  DT_Employees.UpdateEmployee(employee);
 	}
 
 	@Override
 	public boolean Delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		return DT_Employees.DeleteEmployee(id);
 	}
 
 }

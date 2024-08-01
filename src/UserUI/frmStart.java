@@ -47,12 +47,12 @@ public class frmStart extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmStart() {
+	public frmStart(frmLogin fr) {
 		setTitle("Sistema de Ventas");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(fr);
 		setBounds(100, 100, 1002, 650);
 //		addWindowListener(new WindowAdapter() {
 //	            @Override

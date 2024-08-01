@@ -47,8 +47,6 @@ Create table Employees
 );
 go
 
-Insert into Employees (fullname, birthdate, identificationcard, phone, email, position, salary)
-
 /*Create table Payroll
 (
   pyrollid int identity(1,1) primary key,
@@ -96,6 +94,9 @@ go
 
 Insert into Users (roleid, employeeid, username, password)
 values (1, 1, 'Ov3rst', '123');
+
+Insert into Users (roleid, employeeid, username, password)
+values (2, 2, 'Edwin', '456');
 
 Create table Category
 (
@@ -214,11 +215,25 @@ from Roles
 select *
 from Users
 
+select 
+u.userid,
+r.roleid, r.rolename, r.registrationdate,
+e.employeeid, e.fullname, e.birthdate, e.identificationcard, e.phone, e.email, e.position, e.salary, e.registrationdate,
+u.username, u.password, u.registrationdate
+from Users u
+inner join Employees e on e.employeeid = u.employeeid
+inner join Roles r on r.roleid = u.roleid
+
 select *from Employees
 
+--delete Employees where employeeid = ?
 
 
 /*select  
 *from Users u
-Inner join Employees e on e.employeeid = u.employeeid;*/
+Inner join Employees e on e.employeeid = u.employeeid;
+
+Update Employees set fullname = ?, birthdate = ?, identificationcard = ?, phone = ?, email = ?, position = ?, salary = ?
+where employeeid = ?
+*/
 

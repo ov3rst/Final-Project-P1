@@ -41,7 +41,7 @@ public class LoginActions implements ActionListener {
 //		JOptionPane.showMessageDialog(fr, "Usuario y/o contraseña incorrectos", "Error", JOptionPane.INFORMATION_MESSAGE);
 		
 		fr.dispose();
-		frmStart frm = new frmStart();
+		frmStart frm = new frmStart(fr);
 		frm.setVisible(true);
 		return;
 	}

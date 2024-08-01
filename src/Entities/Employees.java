@@ -1,6 +1,7 @@
 package Entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Employees {
 
@@ -89,4 +90,17 @@ public class Employees {
 	public int getId() {
 		return employeeid;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employees employee = (Employees) o;
+        return employeeid == employee.employeeid;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeid);
+    }
 }

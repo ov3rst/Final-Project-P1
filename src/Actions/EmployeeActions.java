@@ -15,7 +15,6 @@ public class EmployeeActions implements ActionListener {
 
 	private frmEmployees fr;
 	private D_Employees data;
-	private Employees employee;
 	
 	public EmployeeActions(frmEmployees fr) {
 		this.fr = fr;
@@ -26,16 +25,52 @@ public class EmployeeActions implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == fr.getBtnSave()) InsertEmployee();
+		
+		if(e.getSource() == fr.getBtnEdit()) UpdateEmployee();
+		
+		if(e.getSource() == fr.getBtnDelete()) DeleteEmployee();
+		
+		JOptionPane.showMessageDialog(fr, "Acción realizada con exito!!!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+		fr.getEmployees();
+		fr.ClearFields();
 	}
 	
 	private void InsertEmployee() {
 		Date date = new Date();
 		if(ValidateFields()) {
-			Employees emp = new Employees(-1, fr.getTxtFullname().getText().trim(), fr.getdcBirthdate().getDate(), Integer.parseInt(fr.getTxtIdentification().getText().trim()), Integer.parseInt(fr.getTxtPhone().getText().trim()), fr.getTxtEmail().getText().trim(), fr.getTxtPosition().getText().trim(), Double.parseDouble(fr.getTxtSalary().getText().trim()), date);
+			Employees emp = new Employees(-1, fr.getTxtFullname().getText().trim(), 
+						fr.getdcBirthdate().getDate(), 
+						Integer.parseInt(fr.getTxtIdentification().getText().trim()), 
+						Integer.parseInt(fr.getTxtPhone().getText().trim()), 
+						fr.getTxtEmail().getText().trim(), 
+						fr.getTxtPosition().getText().trim(), 
+						Double.parseDouble(fr.getTxtSalary().getText().trim()), date);
 			data.Insert(emp);
 			fr.getEmpList().add(emp);
-			fr.getEmployees();
-			fr.ClearFields();
+		}
+	}
+	
+	private void UpdateEmployee() {
+		Date date = new Date();
+		Employees emp = new Employees(fr.getEmployee().getId(), fr.getTxtFullname().getText().trim(), 
+				fr.getdcBirthdate().getDate(),
+				Integer.parseInt(fr.getTxtIdentification().getText().trim()), 
+				Integer.parseInt(fr.getTxtPhone().getText().trim()), 
+				fr.getTxtEmail().getText().trim(), 
+				fr.getTxtPosition().getText().trim(), 
+				Double.parseDouble(fr.getTxtSalary().getText().trim()), date);
+		
+		data.Update(emp);
+		fr.getEmpList().set(fr.getEmpList().indexOf(fr.getEmployee()), emp);
+		
+	}
+	
+	private void DeleteEmployee() {
+		int id = Integer.parseInt(fr.getTxtId().getText()), confirm = JOptionPane.showConfirmDialog(null, "¿Desea eliminar a este empleado?", "Confirmación", JOptionPane.YES_NO_OPTION);
+		
+		if(confirm == JOptionPane.YES_OPTION) {
+			data.Delete(id);
+			fr.getEmpList().removeIf(e -> e.getId() == id);
 		}
 	}
 	
