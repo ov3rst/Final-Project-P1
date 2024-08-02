@@ -209,11 +209,21 @@ Insert into Roles
 values('Administrador'),
   ('Empleado');
 
+delete Roles where roleid = 1003
+
+delete Users where userid = 1004
+
 select *
 from Roles
 
 select *
 from Users
+
+select * from Supplier
+Insert into Supplier (businessname, rnc, phone,email) values ('Cerveceria Nacional Dominicana', 101003723, 564645, 'Institucional.CND@ab-inbev.com.')
+/*Insert into Supplier (businessname, rnc, phone,email)
+Update Supplier set businessname = ?, rnc = ?, phone = ?, email = ?
+where supplierid ? ?*/
 
 select 
 u.userid,
@@ -237,3 +247,11 @@ Update Employees set fullname = ?, birthdate = ?, identificationcard = ?, phone 
 where employeeid = ?
 */
 
+--Insert into Category(descriptions) values('Cervezas'), ('Ron'), ('Bebidas Gaseosas'), ('Cereales'), ('Lácteos'), ('Embutidos')
+--select * from Category
+--Insert into Category(descriptions) values()
+--Update Category set descriptions = ?
+--where categoryid = ?
+--Delete Category where categoryid = ?
+
+select * from Products
