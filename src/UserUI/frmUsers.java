@@ -7,7 +7,6 @@ import javax.swing.JTable;
 import java.awt.SystemColor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +20,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import Actions.UsersActions;
-import Data.DT_Users;
 import Domain.D_Employees;
 import Domain.D_Users;
 import Entities.Employees;
@@ -47,8 +45,8 @@ public class frmUsers extends JPanel {
 	private D_Employees empData = new D_Employees();
 	private List<User> usList = data.GetAll();
 	private User user;
-	private List<Employees> empList = empData.GetAll(), usempList = usList.stream().map(u -> u.getEmployee()).toList();
-	private Set<Employees> notUser = new HashSet<>(empList);
+	private List<Employees> empList = empData.GetAll(), usempList;
+	private Set<Employees> notUser;
 	private JButton btnSave;
 	private JButton btnEdit;
 	private JButton btnDelete;
@@ -121,6 +119,7 @@ public class frmUsers extends JPanel {
 		btnEdit.setEnabled(false);
 		btnEdit.setBackground(new Color(30, 144, 255));
 		btnEdit.setBounds(34, 288, 210, 28);
+		btnEdit.addActionListener(action);
 		add(btnEdit);
 		
 		btnDelete = new JButton("Eliminar");
@@ -129,6 +128,7 @@ public class frmUsers extends JPanel {
 		btnDelete.setEnabled(false);
 		btnDelete.setBackground(new Color(220, 20, 60));
 		btnDelete.setBounds(34, 328, 210, 28);
+		btnDelete.addActionListener(action);
 		add(btnDelete);
 		
 		JLabel lblDetails = new JLabel("Detalle Usuario");
@@ -209,16 +209,15 @@ public class frmUsers extends JPanel {
 		lblRole.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblRole.setBounds(14, 183, 27, 16);
 		add(lblRole);
-				
-		notUser.removeAll(usempList);
-		getUsers();
+		
+		UpdateLists();
+		FillTabUsers();
 		FillcbRoles();
 		FillCbEmployee();
 
 	}
 	
-	public void getUsers () {
-		String hidePassword = "";	
+	public void FillTabUsers () {
 		
 		tbm.setRowCount(0);
 		for(User us: usList) {
@@ -256,6 +255,7 @@ public class frmUsers extends JPanel {
 	}
 	
 	private void FillCbEmployee() {
+				
 		for(Employees e: notUser) {
 			cbEmployeesName.addItem(e.getFullname());
 		}
@@ -275,6 +275,12 @@ public class frmUsers extends JPanel {
 		cbEmployeesName.setEnabled(true);
 		cbRole.setSelectedIndex(0);		
 		FillCbEmployee();
+	}
+	
+	public void UpdateLists() {
+		usempList = usList.stream().map(u -> u.getEmployee()).toList();
+		notUser = new HashSet<>(empList);
+		notUser.removeAll(usempList);
 	}
 
 	public JTextField getTxtUser() {

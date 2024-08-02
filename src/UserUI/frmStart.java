@@ -43,6 +43,9 @@ public class frmStart extends JFrame {
 	private JMenuItem mniPayments;
 	private JMenuItem mniIncome;
 	private JMenuItem mniAccRec;
+	private JMenu mnProducts;
+	private JMenuItem mniProduct;
+	private JMenuItem mniCategory;
 
 	/**
 	 * Create the frame.
@@ -90,6 +93,21 @@ public class frmStart extends JFrame {
 		mniExit.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		mniExit.addActionListener(actions);
 		mnMenu.add(mniExit);
+		
+		mnProducts = new JMenu("Productos");
+		mnProducts.setIcon(new ImageIcon("E:\\Programacion\\Java\\FinalProject-PointSale\\Assets\\icons8-producto-50.png"));
+		mnProducts.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		menuBar.add(mnProducts);
+		
+		mniProduct = new JMenuItem("Gestionar Productos");
+		mniProduct.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniProduct.addActionListener(actions);
+		mnProducts.add(mniProduct);
+		
+		mniCategory = new JMenuItem("Categorias");
+		mniCategory.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		mniCategory.addActionListener(actions);
+		mnProducts.add(mniCategory);
 		
 		JMenu mnSales = new JMenu("Ventas");
 		mnSales.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -283,7 +301,11 @@ public class frmStart extends JFrame {
 		return mniAccRec;
 	}
 
-	
-	
-	
+	public JMenuItem getMniProduct() {
+		return mniProduct;
+	}
+
+	public JMenuItem getMniCategory() {
+		return mniCategory;
+	}
 }

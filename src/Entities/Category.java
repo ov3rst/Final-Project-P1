@@ -8,7 +8,6 @@ public class Category {
 	private Date registrationdate;
 	
 	public Category(int categoryid, String descriptions, Date registrationdate) {
-		super();
 		this.categoryid = categoryid;
 		this.descriptions = descriptions;
 		this.registrationdate = registrationdate;

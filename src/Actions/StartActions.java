@@ -48,6 +48,10 @@ public class StartActions implements ActionListener{
 		
 		if(e.getSource() == fr.getMniIncome()) OpenIncomeReportPane();
 		
+		if(e.getSource() == fr.getMniProduct()) OpenProductPane();
+		
+		if(e.getSource() == fr.getMniCategory()) OpenCategoryPane();
+		
 		fr.getPlInit().revalidate();
 		fr.getPlInit().repaint();
 	}
@@ -119,8 +123,17 @@ public class StartActions implements ActionListener{
 	}
 	
 	private void OpenProviderPane() {
-		frmProvider frm = new frmProvider();
+		frmSupplier frm = new frmSupplier();
 		fr.getPlInit().add(frm);
 	}
 	
+	private void OpenProductPane() {
+		frmProduct frm = new frmProduct();
+		fr.getPlInit().add(frm);
+	}
+	
+	private void OpenCategoryPane() {
+		frmCategory frm = new frmCategory();
+		fr.getPlInit().add(frm);
+	}
 }

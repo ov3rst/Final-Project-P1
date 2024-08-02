@@ -15,6 +15,7 @@ public class EmployeeActions implements ActionListener {
 
 	private frmEmployees fr;
 	private D_Employees data;
+	private boolean confirm = false;
 	
 	public EmployeeActions(frmEmployees fr) {
 		this.fr = fr;
@@ -30,9 +31,12 @@ public class EmployeeActions implements ActionListener {
 		
 		if(e.getSource() == fr.getBtnDelete()) DeleteEmployee();
 		
-		JOptionPane.showMessageDialog(fr, "Acción realizada con exito!!!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-		fr.getEmployees();
-		fr.ClearFields();
+		if(confirm) {
+			JOptionPane.showMessageDialog(fr, "Acción realizada con exito!!!", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
+			fr.getEmployees();
+			fr.ClearFields();
+			confirm = false;
+		}
 	}
 	
 	private void InsertEmployee() {
@@ -45,7 +49,7 @@ public class EmployeeActions implements ActionListener {
 						fr.getTxtEmail().getText().trim(), 
 						fr.getTxtPosition().getText().trim(), 
 						Double.parseDouble(fr.getTxtSalary().getText().trim()), date);
-			data.Insert(emp);
+			confirm = data.Insert(emp);
 			fr.getEmpList().add(emp);
 		}
 	}
@@ -60,16 +64,16 @@ public class EmployeeActions implements ActionListener {
 				fr.getTxtPosition().getText().trim(), 
 				Double.parseDouble(fr.getTxtSalary().getText().trim()), date);
 		
-		data.Update(emp);
+		confirm = data.Update(emp);
 		fr.getEmpList().set(fr.getEmpList().indexOf(fr.getEmployee()), emp);
 		
 	}
 	
 	private void DeleteEmployee() {
-		int id = Integer.parseInt(fr.getTxtId().getText()), confirm = JOptionPane.showConfirmDialog(null, "¿Desea eliminar a este empleado?", "Confirmación", JOptionPane.YES_NO_OPTION);
+		int id = Integer.parseInt(fr.getTxtId().getText()), usconfirm = JOptionPane.showConfirmDialog(null, "¿Desea eliminar a este empleado?", "Confirmación", JOptionPane.YES_NO_OPTION);
 		
-		if(confirm == JOptionPane.YES_OPTION) {
-			data.Delete(id);
+		if(usconfirm == JOptionPane.YES_OPTION) {
+			confirm = data.Delete(id);
 			fr.getEmpList().removeIf(e -> e.getId() == id);
 		}
 	}
